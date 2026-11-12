@@ -1,0 +1,25 @@
+"""Swiggy / Zomato / UrbanPiper are connected on the existing Delivery apps page (signed webhook, canonical payload).
+They appear here for discovery and status only; the engine's generic webhook does not handle them."""
+from app.integrations.base_provider import IntegrationProvider, ProviderInfo
+from app.integrations.capabilities import Capability, Category
+from app.integrations.registry import IntegrationRegistry
+
+
+class ManagedDeliveryProvider(IntegrationProvider):
+    def __init__(self, slug: str, name: str, extra: str):
+        self.info = ProviderInfo(
+            slug=slug, name=name, category=Category.FOOD_DELIVERY, status="live",
+            description=f"Receive {name} orders into the POS and kitchen through a signed webhook. {extra}",
+            capabilities=(Capability.RECEIVE_ORDERS,),
+            planned_capabilities=("Order accept/reject and status sync", "Menu and item availability sync"),
+            manage_path="/delivery",
+            requirements="A middleware or approved partner access that posts orders to RestoIQ. No public Swiggy/Zomato order API exists.",
+        )
+
+
+for _slug, _name, _extra in (
+    ("swiggy", "Swiggy", "Needs middleware or Swiggy partner onboarding."),
+    ("zomato", "Zomato", "Needs middleware or Zomato partner onboarding and credentials."),
+    ("urbanpiper", "UrbanPiper", "Middleware; payload adapter pending a real account."),
+):
+    IntegrationRegistry.register(ManagedDeliveryProvider(_slug, _name, _extra))
