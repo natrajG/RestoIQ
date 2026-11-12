@@ -71,3 +71,4 @@ The feature review used [Restaurant-Table-Occupancy-Detection](https://github.co
 Backend tests: `docker compose exec api pytest`  
 Frontend build/type-check: `cd frontend && npm ci && npm run build`  
 Inspect service logs: `docker compose logs -f api worker`
+# RestoIQ
