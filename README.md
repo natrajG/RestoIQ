@@ -1,4 +1,4 @@
-# Restaurant POS & Operations Intelligence
+# RestoIQ — Restaurant POS & Operations Intelligence
 
 Multi-tenant restaurant platform with a first-party POS, optional existing-POS connectors, kitchen and floor operations, inventory, customer loyalty, workforce/payroll inputs, sales analytics, and an independently testable camera-analysis service.
 
@@ -71,4 +71,3 @@ The feature review used [Restaurant-Table-Occupancy-Detection](https://github.co
 Backend tests: `docker compose exec api pytest`  
 Frontend build/type-check: `cd frontend && npm ci && npm run build`  
 Inspect service logs: `docker compose logs -f api worker`
-# RestoIQ

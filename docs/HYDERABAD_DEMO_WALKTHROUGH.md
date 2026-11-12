@@ -16,7 +16,7 @@ The seeded demo now includes:
 ## How to run
 
 ```bash
-cd /home/natraj/restaurant-revenue-platform
+cd /home/natraj/RestoIQ
 docker compose up --build -d
 ```
 

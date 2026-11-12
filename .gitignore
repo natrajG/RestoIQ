@@ -13,3 +13,4 @@ uploads/*
 *.log
 backups/
 .idea/
+.idea/
